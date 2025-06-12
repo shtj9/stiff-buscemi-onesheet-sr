@@ -207,29 +207,31 @@
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
 }
 
-        @media (max-width: 480px) { /* Ovo je breakpoint za veoma male mobilne telefone */
+        @media (max-width: 375px) {
     .one-sheet-container {
-        padding: 20px; /* Smanjite unutrašnji padding kontejnera za male ekrane */
+        padding: 10px; /* Još više smanjen padding za najmanje ekrane */
     }
     body {
-        padding: 10px; /* Smanjite padding tela stranice */
+        padding: 5px; /* Nema daljeg smanjenja, ili smanjite ako je neophodno */
     }
     h1 {
-        font-size: 3rem; /* Smanjite veličinu H1 naslova */
-        letter-spacing: 3px;
+        font-size: 2rem; /* Još manje za najmanje ekrane */
+        letter-spacing: 1px;
     }
     h2 {
-        font-size: 2rem; /* Smanjite veličinu H2 naslova */
+        font-size: 1.5rem; /* Još manje za najmanje ekrane */
     }
     .download-button,
     .pdf-download-btn {
-        font-size: 0.9rem; /* Smanjite veličinu teksta na dugmićima */
-        padding: 12px 18px; /* Smanjite padding dugmića */
-        text-align: center; /* Centrirajte tekst u dugmićima ako se prelama */
+        font-size: 0.8rem; /* Minimalni font za dugmiće */
+        padding: 8px 12px; /* Minimalni padding dugmića */
     }
     .qr-code-item img {
-        width: 80px; /* Smanjite veličinu QR kodova na malim ekranima */
-        height: 80px;
+        width: 70px; /* Još manje za najmanje ekrane */
+        height: 70px;
+    }
+    .qr-code-item p {
+        font-size: 0.8rem; /* Još manje za QR labele */
     }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
