@@ -132,76 +132,80 @@
             margin-top: 20px;
         }
         .download-button { /* Reusable class for all download buttons */
-            display: inline-block;
-            padding: 15px 25px; /* Slightly adjusted padding for consistency */
-            background-color: var(--color-button-bg);
-            color: var(--color-button-text);
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1rem; /* Slightly smaller font for more buttons */
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-            letter-spacing: 1px;
-            border: 2px solid var(--color-button-text);
-            text-transform: uppercase;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-            font-family: var(--font-body); /* Ensure consistent font */
-            white-space: nowrap; /* Prevent text wrapping within button */
-        }
-        .download-button:hover {
-            background-color: var(--color-border-primary); /* Button turns red on hover */
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-        }
+    display: inline-block;
+    padding: 15px 25px; /* Slightly adjusted padding for consistency */
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem; /* Slightly smaller font for more buttons */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    letter-spacing: 1px;
+    border: 2px solid var(--color-button-text);
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-family: var(--font-body); /* Ensure consistent font */
+    /* white-space: nowrap; */ /* OBRISANA OVA LINIJA */
+}
+       .download-button:hover {
+    background-color: var(--color-border-primary); /* Button turns red on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
 
         .qr-code-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 1px dashed var(--color-border-secondary); /* QR section border is light */
-        }
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px dashed var(--color-border-secondary); /* QR section border is light */
+}
         .qr-code-item {
-            text-align: center;
-        }
-        .qr-code-item img {
-            border: 4px solid var(--color-border-primary); /* QR border is dark */
-            border-radius: 0;
-            padding: 5px;
-            background-color: var(--color-text-light); /* Light background for QR readability */
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-        }
-        .qr-code-item p {
-            margin-top: 10px;
-            font-size: 0.95rem;
-            color: var(--color-accent-text); /* QR labels are light */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
+    text-align: center;
+}
+.qr-code-item img {
+    border: 4px solid var(--color-border-primary); /* QR border is dark */
+    border-radius: 0;
+    padding: 5px;
+    background-color: var(--color-text-light); /* Light background for QR readability */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    /* DODATO ZA RESPONSIVNOST QR KODOVA */
+    max-width: 100%;
+    height: auto;
+}
+.qr-code-item p {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: var(--color-accent-text); /* QR labels are light */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
         .pdf-download-btn { /* Renamed for clarity, it's specific to the PDF */
-            display: block;
-            width: fit-content;
-            margin: 40px auto 0;
-            padding: 18px 35px;
-            background-color: var(--color-button-bg); /* Button background is dark */
-            color: var(--color-button-text); /* Button text is light */
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-            letter-spacing: 1.5px;
-            border: 2px solid var(--color-button-text); /* Button border is light */
-            text-transform: uppercase;
-        }
-        .pdf-download-btn:hover {
-            background-color: var(--color-border-primary); /* Button turns red on hover */
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
-        }
+    display: block;
+    width: fit-content;
+    margin: 40px auto 0;
+    padding: 18px 35px;
+    background-color: var(--color-button-bg); /* Button background is dark */
+    color: var(--color-button-text); /* Button text is light */
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1.5px;
+    border: 2px solid var(--color-button-text); /* Button border is light */
+    text-transform: uppercase;
+    /* white-space: nowrap; */ /* OBRISANA OVA LINIJA AKO JE POSTOJALA */
+}
+.pdf-download-btn:hover {
+    background-color: var(--color-border-primary); /* Button turns red on hover */
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+}
 
         @media (max-width: 480px) { /* Ovo je breakpoint za veoma male mobilne telefone */
     .one-sheet-container {
