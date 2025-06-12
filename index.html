@@ -1,307 +1,312 @@
 <!DOCTYPE html>
-<html lang="sr"> <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stiff Buscemi - Jednolisnica (Balkanski Umetnički Stil)</title>     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* --- NEW COLOR PALETTE (Swapped Body/Container) --- */
-        :root {
-            --color-bg-page: #231F20; /* NEW: Main dark grey/black background for the page */
-            --color-bg-container: #C24F3A; /* NEW: Red for the main one-sheet box background */
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stiff Buscemi - One Sheet (Balkan Art Style)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* --- NEW COLOR PALETTE (Swapped Body/Container) --- */
+        :root {
+            --color-bg-page: #231F20; /* NEW: Main dark grey/black background for the page */
+            --color-bg-container: #C24F3A; /* NEW: Red for the main one-sheet box background */
 
-            --color-text-light: #F5F0E3; /* Light text for contrast on red container (remains good) */
-            --color-text-dark: #231F20; /* Dark text for contrast on lighter elements (e.g., QR background) */
+            --color-text-light: #F5F0E3; /* Light text for contrast on red container (remains good) */
+            --color-text-dark: #231F20; /* Dark text for contrast on lighter elements (e.g., QR background) */
 
-            --color-border-primary: #231F20; /* NEW: Dark grey/black border for main container, contrasting with red box */
-            --color-border-secondary: #F5F0E3; /* Light border for inner elements/lines (remains good) */
-            --color-accent-text: #F5F0E3; /* Headings and links will be light (remains good) */
-            --color-button-bg: #231F20; /* NEW: Button background will be dark grey/black */
-            --color-button-text: #F5F0E3; /* Button text will be light (remains good) */
-        }
+            --color-border-primary: #231F20; /* NEW: Dark grey/black border for main container, contrasting with red box */
+            --color-border-secondary: #F5F0E3; /* Light border for inner elements/lines (remains good) */
+            --color-accent-text: #F5F0E3; /* Headings and links will be light (remains good) */
+            --color-button-bg: #231F20; /* NEW: Button background will be dark grey/black */
+            --color-button-text: #F5F0E3; /* Button text will be light (remains good) */
+        }
 
-        @keyframes paperRustle {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
-        }
+        @keyframes paperRustle {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
 
-        body {
-            font-family: var(--font-body);
-            background-color: var(--color-bg-page); /* Page background is the dominant dark grey/black */
-            color: var(--color-text-light); /* Default text is light */
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            /* Background texture adjusted for new body background color */
-            background-image:
-                url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJnIj48ZmUgZGlzdGFuY2VEdXJlY3RlZFJlc29sdXRpb24vbmFubyI+PC9mZT48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIjMjMxRjIwIi8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMjAiIGZpbGw9IiM0NjM5M0UiIGZpbHRlcj0idXJsKCNnKSIvPjwvc3ZnPg=='), /* Subtle noise/grit, adjusted for dark background */
-                linear-gradient(145deg, var(--color-bg-page) 5%, transparent 30%), /* Uses new page bg color */
-                radial-gradient(at 80% 20%, #E8A88F 5%, transparent 30%), /* A lighter shade of the red for subtle glow (looks good on dark) */
-                linear-gradient(-45deg, var(--color-bg-page) 5%, transparent 30%), /* Uses new page bg color */
-                var(--color-bg-page);
-            background-size: 150px 150px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
-            background-blend-mode: overlay, multiply, screen, overlay, normal;
-            animation: paperRustle 120s linear infinite;
-        }
-        .one-sheet-container {
-            max-width: 850px;
-            width: 100%;
-            background-color: rgba(194, 79, 58, 0.95); /* Container background is the red with slight transparency */
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 0 5px rgba(35, 31, 32, 0.3) inset; /* Dark inner shadow */
-            padding: 35px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-            position: relative;
-            overflow: hidden;
-            border: 3px solid var(--color-border-primary); /* Main container border is dark */
-            box-sizing: border-box;
-        }
-        .one-sheet-container::before {
-            content: '';
-            position: absolute;
-            top: -10px; left: -10px; right: -10px; bottom: -10px;
-            border: 1px dashed var(--color-border-secondary); /* Dashed inner border is light */
-            z-index: 0;
-            pointer-events: none;
-            border-radius: 10px;
-        }
-        .content-section {
-            position: relative;
-            z-index: 1;
-        }
-        h1, h2 {
-            font-family: var(--font-display-h1);
-            color: var(--color-accent-text); /* Headings are light */
-            text-align: center;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-            margin-bottom: 20px;
-        }
-        h1 {
-            font-family: var(--font-display-h1);
-            font-size: 4rem;
-            letter-spacing: 5px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--color-border-primary); /* H1 border is dark */
-            text-transform: uppercase;
-        }
-        h2 {
-            font-family: var(--font-display-h2);
-            font-size: 2.5rem;
-            color: var(--color-accent-text); /* H2 also light */
-            border-bottom: 2px solid var(--color-border-primary); /* H2 border is dark */
-            padding-bottom: 10px;
-            margin-top: 40px;
-            text-align: left;
-        }
-        .logo-img {
-            max-width: 350px;
-            height: auto;
-            display: block;
-            margin: 0 auto 30px;
-            filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
-        }
-        .band-image {
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5), 0 0 0 5px var(--color-border-primary); /* Image border is dark */
-            filter: none;
-            border: 2px solid var(--color-border-secondary); /* Image inner border is light */
-        }
-        p {
-            font-size: 1.1rem;
-            color: var(--color-text-light); /* Body text is light */
-            text-align: justify;
-        }
-        /* New styles for button group */
-        .download-buttons-group {
-            display: flex;
-            flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
-            gap: 15px; /* Space between buttons */
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .download-button { /* Reusable class for all download buttons */
-            display: inline-block;
-            padding: 15px 25px; /* Slightly adjusted padding for consistency */
-            background-color: var(--color-button-bg);
-            color: var(--color-button-text);
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1rem; /* Slightly smaller font for more buttons */
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-            letter-spacing: 1px;
-            border: 2px solid var(--color-button-text);
-            text-transform: uppercase;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-            font-family: var(--font-body); /* Ensure consistent font */
-            white-space: nowrap; /* Prevent text wrapping within button */
-        }
-        .download-button:hover {
-            background-color: var(--color-border-primary); /* Button turns red on hover */
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-        }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg-page); /* Page background is the dominant dark grey/black */
+            color: var(--color-text-light); /* Default text is light */
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            /* Background texture adjusted for new body background color */
+            background-image:
+                url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJnIj48ZmUgZGlzdGFuY2VEdXJlY3RlZFJlc29sdXRpb24vbmFubyI+PC9mZT48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIjMjMxRjIwIi8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMjAiIGZpbGw9IiM0NjM5M0UiIGZpbHRlcj0idXJsKCNnKSIvPjwvc3ZnPg=='), /* Subtle noise/grit, adjusted for dark background */
+                linear-gradient(145deg, var(--color-bg-page) 5%, transparent 30%), /* Uses new page bg color */
+                radial-gradient(at 80% 20%, #E8A88F 5%, transparent 30%), /* A lighter shade of the red for subtle glow (looks good on dark) */
+                linear-gradient(-45deg, var(--color-bg-page) 5%, transparent 30%), /* Uses new page bg color */
+                var(--color-bg-page);
+            background-size: 150px 150px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+            background-blend-mode: overlay, multiply, screen, overlay, normal;
+            animation: paperRustle 120s linear infinite;
+        }
+        .one-sheet-container {
+            max-width: 850px;
+            width: 100%;
+            background-color: rgba(194, 79, 58, 0.95); /* Container background is the red with slight transparency */
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 0 5px rgba(35, 31, 32, 0.3) inset; /* Dark inner shadow */
+            padding: 35px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid var(--color-border-primary); /* Main container border is dark */
+            box-sizing: border-box;
+        }
+        .one-sheet-container::before {
+            content: '';
+            position: absolute;
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
+            border: 1px dashed var(--color-border-secondary); /* Dashed inner border is light */
+            z-index: 0;
+            pointer-events: none;
+            border-radius: 10px;
+        }
+        .content-section {
+            position: relative;
+            z-index: 1;
+        }
+        h1, h2 {
+            font-family: var(--font-display-h1);
+            color: var(--color-accent-text); /* Headings are light */
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-family: var(--font-display-h1);
+            font-size: 4rem;
+            letter-spacing: 5px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--color-border-primary); /* H1 border is dark */
+            text-transform: uppercase;
+        }
+        h2 {
+            font-family: var(--font-display-h2);
+            font-size: 2.5rem;
+            color: var(--color-accent-text); /* H2 also light */
+            border-bottom: 2px solid var(--color-border-primary); /* H2 border is dark */
+            padding-bottom: 10px;
+            margin-top: 40px;
+            text-align: left;
+        }
+        .logo-img {
+            max-width: 350px;
+            height: auto;
+            display: block;
+            margin: 0 auto 30px;
+            filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
+        }
+        .band-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5), 0 0 0 5px var(--color-border-primary); /* Image border is dark */
+            filter: none;
+            border: 2px solid var(--color-border-secondary); /* Image inner border is light */
+        }
+        p {
+            font-size: 1.1rem;
+            color: var(--color-text-light); /* Body text is light */
+            text-align: justify;
+        }
+        /* New styles for button group */
+        .download-buttons-group {
+            display: flex;
+            flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+            gap: 15px; /* Space between buttons */
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .download-button { /* Reusable class for all download buttons */
+            display: inline-block;
+            padding: 15px 25px; /* Slightly adjusted padding for consistency */
+            background-color: var(--color-button-bg);
+            color: var(--color-button-text);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem; /* Slightly smaller font for more buttons */
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            letter-spacing: 1px;
+            border: 2px solid var(--color-button-text);
+            text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            font-family: var(--font-body); /* Ensure consistent font */
+            white-space: nowrap; /* Prevent text wrapping within button */
+        }
+        .download-button:hover {
+            background-color: var(--color-border-primary); /* Button turns red on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
 
-        .qr-code-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 1px dashed var(--color-border-secondary); /* QR section border is light */
-        }
-        .qr-code-item {
-            text-align: center;
-        }
-        .qr-code-item img {
-            border: 4px solid var(--color-border-primary); /* QR border is dark */
-            border-radius: 0;
-            padding: 5px;
-            background-color: var(--color-text-light); /* Light background for QR readability */
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-        }
-        .qr-code-item p {
-            margin-top: 10px;
-            font-size: 0.95rem;
-            color: var(--color-accent-text); /* QR labels are light */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-        .pdf-download-btn { /* Renamed for clarity, it's specific to the PDF */
-            display: block;
-            width: fit-content;
-            margin: 40px auto 0;
-            padding: 18px 35px;
-            background-color: var(--color-button-bg); /* Button background is dark */
-            color: var(--color-button-text); /* Button text is light */
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-            letter-spacing: 1.5px;
-            border: 2px solid var(--color-button-text); /* Button border is light */
-            text-transform: uppercase;
-        }
-        .pdf-download-btn:hover {
-            background-color: var(--color-border-primary); /* Button turns red on hover */
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
-        }
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Metal+Mania&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        .qr-code-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px dashed var(--color-border-secondary); /* QR section border is light */
+        }
+        .qr-code-item {
+            text-align: center;
+        }
+        .qr-code-item img {
+            border: 4px solid var(--color-border-primary); /* QR border is dark */
+            border-radius: 0;
+            padding: 5px;
+            background-color: var(--color-text-light); /* Light background for QR readability */
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+        }
+        .qr-code-item p {
+            margin-top: 10px;
+            font-size: 0.95rem;
+            color: var(--color-accent-text); /* QR labels are light */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .pdf-download-btn { /* Renamed for clarity, it's specific to the PDF */
+            display: block;
+            width: fit-content;
+            margin: 40px auto 0;
+            padding: 18px 35px;
+            background-color: var(--color-button-bg); /* Button background is dark */
+            color: var(--color-button-text); /* Button text is light */
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1.5px;
+            border: 2px solid var(--color-button-text); /* Button border is light */
+            text-transform: uppercase;
+        }
+        .pdf-download-btn:hover {
+            background-color: var(--color-border-primary); /* Button turns red on hover */
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Metal+Mania&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="one-sheet-container">
-        <div class="content-section text-center">
-            <img src="https://i.imgur.com/Bzbulbr.png" alt="Logo benda Stiff Buscemi" class="logo-img">             <h1 class="mt-4">STIFF BUSCEMI</h1>
-            <p class="text-gray-300 text-sm" style="color: var(--color-text-light);">Novi Sad, Vojvodina, Srbija</p>         </div>
+    <div class="one-sheet-container">
+        <div class="content-section text-center">
+            <img src="https://i.imgur.com/Bzbulbr.png" alt="Stiff Buscemi Logo" class="logo-img">
+        </div>
 
-        <div class="content-section text-center">
-            <img
-                src="https://i.imgur.com/uYkHd6Y.jpeg"
-                alt="Fotografija benda Stiff Buscemi"                 class="band-image"
-            >
-            <div class="download-buttons-group">
-                <a
-                    href="https://drive.google.com/file/d/1VuO0x5UuvWP074cGPKM3C7eyMN0Bn_hN/view?usp=sharing"
-                    download="Stiff_Buscemi_Band_Photo.jpg"
-                    class="download-button"
-                >
-                    Preuzmi fotografiju benda                 </a>
-                <a
-                    href="https://drive.google.com/file/d/1VX6vK5Xx2J0fSlo3OcIw9fTA5CVv-ZhY/view?usp=sharing"
-                    download="Stiff_Buscemi_Logo_White.png"
-                    class="download-button"
-                >
-                    Preuzmi beli logo                 </a>
-                <a
-                    href="https://drive.google.com/file/d/1UO_ge9ac-3PQn95MArFZEiT6QZMtjvvu/view?usp=sharing"
-                    download="Stiff_Buscemi_Logo_Black.png"
-                    class="download-button"
-                >
-                    Preuzmi crni logo                 </a>
-            </div>
-        </div>
-        <div class="content-section">
-            <h2 class="text-xl font-semibold">BIO</h2>
-            <p class="text-base">
-                Stiff Buscemi je instrumentalni psychedelic rock bend iz Novog Sada, koji crpi inspiraciju iz
-    različitih vrsta domaće paprike, bliskoistočnih čajeva i afričkih začina.
-    Bend je spontano formiran 2018. godine, a tokom naredne tri godine sarađuju sa drugim
-umetnicima i eksperimentišu sa zvukom i stilom u potrazi za jedinstvenim muzičkim izrazom.
-2022. godine započinju rad na svom prvom albumu,”Jet-black Highdooks”;, koji će oblikovati njihov muzički pravac.
-2025. album je ugledao svetlost dana u saradnji sa izdavačkom kućom Inverted Spectrum Records.
+        <div class="content-section text-center">
+            <img
+                src="https://i.imgur.com/uYkHd6Y.jpeg"
+                alt="Stiff Buscemi Band Photo"
+                class="band-image"
+            >
+            <div class="download-buttons-group">
+                <a
+                    href="https://drive.google.com/file/d/1VuO0x5UuvWP074cGPKM3C7eyMN0Bn_hN/view?usp=sharing"
+                    download="Stiff_Buscemi_Band_Photo.jpg"
+                    class="download-button"
+                >
+                    Preuzmi fotografiju benda
+                </a>
+                <a
+                    href="https://drive.google.com/file/d/1VX6vK5Xx2J0fSlo3OcIw9fTA5CVv-ZhY/view?usp=sharing"
+                    download="Stiff_Buscemi_Logo_White.png"
+                    class="download-button"
+                >
+                    Preuzmi beli log
+                </a>
+                <a
+                    href="https://drive.google.com/file/d/1UO_ge9ac-3PQn95MArFZEiT6QZMtjvvu/view?usp=sharing"
+                    download="Stiff_Buscemi_Logo_Black.png"
+                    class="download-button"
+                >
+                    Preuzmi crni logo
+                </a>
+            </div>
+        </div>
+        <div class="content-section">
+            <h2 class="text-xl font-semibold">BIO</h2>
+            <p class="text-base">
+                Stiff Buscemi je instrumentalni psychedelic rock bend iz Novog Sada, koji crpi inspiraciju iz     različitih vrsta domaće paprike, bliskoistočnih čajeva i afričkih začina.     Bend je spontano formiran 2018. godine, a tokom naredne tri godine sarađuju sa drugim umetnicima i eksperimentišu sa zvukom i stilom u potrazi za jedinstvenim muzičkim izrazom. 2022. godine započinju rad na svom prvom albumu,”Jet-black Highdooks”;, koji će oblikovati njihov muzički pravac. 2025. album je ugledao svetlost dana u saradnji sa izdavačkom kućom Inverted Spectrum Records. 
+            </p>
+        </div>
 
-            </p>
-        </div>
+        <div class="content-section">
+            <h2 class="text-xl font-semibold">Album "Jet-Black Highdooks"</h2>
+            <p class="text-base">
+              Jet-Black Highdooks je debitantski album Stiff Buscemija koji kombinuje psihodelični rok sa instrumentalnim slojevima inspirisanim balkanskom muzikom, Bliskim istokom i Severnom Afrikom. Album pruža bogato zvučno iskustvo, naglašeno wah gitarama koje stvaraju atmosferičnu i hipnotičku dinamiku. Ritmovi su složeni, a zvuk prelazi iz energičnih, nepredvidivih trenutaka u introspektivne pasaže. Jet-Black Highdooks donosi jedinstveno zvučno iskustvo koje istražuje granice između tradicije i savremenosti kroz mešavinu egzotičnih tonova i psihodeličnih efekata.                        </p>
+        </div>
 
-        <div class="content-section">
-            <h2 class="text-xl font-semibold">Album "Jet-Black Highdooks"</h2>
-            <p class="text-base">
-            Jet-Black Highdooks je debitantski album Stiff Buscemija koji kombinuje psihodelični rok sa instrumentalnim slojevima inspirisanim balkanskom muzikom, Bliskim istokom i Severnom Afrikom. Album pruža bogato zvučno iskustvo, naglašeno wah gitarama koje stvaraju atmosferičnu i hipnotičku dinamiku. Ritmovi su složeni, a zvuk prelazi iz energičnih, nepredvidivih trenutaka u introspektivne pasaže. Jet-Black Highdooks donosi jedinstveno zvučno iskustvo koje istražuje granice između tradicije i savremenosti kroz mešavinu egzotičnih tonova i psihodeličnih efekata.
-            </p>
-        </div>
+        <div class="content-section">
+            <h2 class="text-xl font-semibold">Gde nas možete slušati</h2>
+            <div class="listen-links text-lg mt-3">
+                <p>SPOTIFY: <a href="https://open.spotify.com/artist/1mCxqYWkmmLWjwipvvCHpB" target="_blank" rel="noopener noreferrer">spotify.com/StiffBuscemi</a></p>
+                <p>YOUTUBE: <a href="https://youtube.com/playlist?list=OLAK5uy_kYgUEBJgEdHwktkUS9BOuILL0yxSFMnIQ&feature=shared" target="_blank" rel="noopener noreferrer">youtube.com/StiffBuscemi</a></p>
+            </div>
+            <div class="qr-code-section">
+                <div class="qr-code-item">
+                    <div id="spotify-qr"></div>
+                    <p>Spotify</p>
+                </div>
+                <div class="qr-code-item">
+                    <div id="youtube-qr"></div>
+                    <p>YouTube</p>
+                </div>
+            </div>
+        </div>
 
-        <div class="content-section">
-            <h2 class="text-xl font-semibold">Gde nas možete slušati</h2>             <div class="listen-links text-lg mt-3">
-                <p>SPOTIFY: <a href="https://open.spotify.com/artist/1mCxqYWkmmLWjwipvvCHpB" target="_blank" rel="noopener noreferrer">spotify.com/StiffBuscemi</a></p>
-                <p>YOUTUBE: <a href="https://youtube.com/playlist?list=OLAK5uy_kYgUEBJgEdHwktkUS9BOuILL0yxSFMnIQ&feature=shared" target="_blank" rel="noopener noreferrer">youtube.com/StiffBuscemi</a></p>
-            </div>
-            <div class="qr-code-section">
-                <div class="qr-code-item">
-                    <div id="spotify-qr"></div>
-                    <p>Spotify</p>                 </div>
-                <div class="qr-code-item">
-                    <div id="youtube-qr"></div>
-                    <p>YouTube</p>                 </div>
-            </div>
-        </div>
+        <div class="content-section">
+            <h2 class="text-xl font-semibold">Kontakti i društvene mreže</h2>
+            <div class="social-links text-lg mt-3">
+                <p><a href="https://www.instagram.com/stiffbuscemi/" target="_blank" rel="noopener noreferrer">Instagram: @stiffbuscemi</a></p>
+                <p><a href="https://www.facebook.com/iwasfrozenstiff" target="_blank" rel="noopener noreferrer">Facebook: /iwasfrozenstiff</a></p>
+                <p><a href="https://stiffbuscemi.bandcamp.com" target="_blank" rel="noopener noreferrer">Bandcamp: stiffbuscemi.bandcamp.com</a></p>
+                <p><a href="https://www.youtube.com/@stiffbuscemi" target="_blank" rel="noopener noreferrer">YouTube: youtube.com/StiffBuscemiOfficial</a></p>
+            </div>
+        </div>
 
-        <div class="content-section">
-            <h2 class="text-xl font-semibold">Kontakti i društvene mreže</h2>             <div class="social-links text-lg mt-3">
-                <p><a href="https://www.instagram.com/stiffbuscemi/" target="_blank" rel="noopener noreferrer">Instagram: @stiffbuscemi</a></p>
-                <p><a href="https://www.facebook.com/iwasfrozenstiff" target="_blank" rel="noopener noreferrer">Facebook: /iwasfrozenstiff</a></p>
-                <p><a href="https://stiffbuscemi.bandcamp.com" target="_blank" rel="noopener noreferrer">Bandcamp: stiffbuscemi.bandcamp.com</a></p>
-                <p><a href="https://www.youtube.com/@stiffbuscemi" target="_blank" rel="noopener noreferrer">YouTube: youtube.com/StiffBuscemiOfficial</a></p>
-            </div>
-        </div>
+        <div class="content-section text-center">
+            <a href="https://drive.google.com/file/d/1X-bqE72PComEsENO6BjJ5vaQYry65ek8/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="pdf-download-btn">
+                Rajder Lista
+            </a>
+        
+        </div>
+    </div>
 
-        <div class="content-section text-center">
-            <a href="https://drive.google.com/file/d/1X-bqE72PComEsENO6BjJ5vaQYry65ek8/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="pdf-download-btn">
-                Tehnički rajder i bina plan             </a>
-            <p class="text-sm mt-2" style="color: var(--color-text-light);">(Otvara se u novoj kartici)</p>         </div>
-    </div>
+    <script>
+        // Function to generate QR code using goqr.me API
+        function generateQRCode(text, elementId) {
+            const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(text)}`;
+            const img = document.createElement('img');
+            img.src = qrCodeUrl;
+            img.alt = `QR Code for ${text}`;
+            document.getElementById(elementId).appendChild(img);
+        }
 
-    <script>
-        // Funkcija za generisanje QR koda putem goqr.me API-ja
-        function generateQRCode(text, elementId) {
-            const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(text)}`;
-            const img = document.createElement('img');
-            img.src = qrCodeUrl;
-            img.alt = `QR kod za ${text}`; // Preveden alt tekst za QR kod
-            document.getElementById(elementId).appendChild(img);
-        }
-
-        // Generisanje QR kodova za linkove za slušanje
-        document.addEventListener('DOMContentLoaded', () => {
-            // !!! VAŽNO: Zamenite ove sa vašim stvarnim Spotify i YouTube linkovima !!!
-            generateQRCode('https://open.spotify.com/artist/1mCxqYWkmmLWjwipvvCHpB', 'spotify-qr'); // Zamenite sa vašim stvarnim Spotify URL-om
-            generateQRCode('https://youtube.com/playlist?list=OLAK5uy_kYgUEBJgEdHwktkUS9BOuILL0yxSFMnIQ&feature=shared', 'youtube-qr'); // Zamenite sa vašim stvarnim YouTube muzičkim URL-om
-        });
-    </script>
+        // Generate QR codes for listening links
+        document.addEventListener('DOMContentLoaded', () => {
+            // !!! IMPORTANT: Replace these with your actual Spotify and YouTube links !!!
+            generateQRCode('https://open.spotify.com/artist/1mCxqYWkmmLWjwipvvCHpB', 'spotify-qr'); // Replace with your actual Spotify URL
+            generateQRCode('https://youtube.com/playlist?list=OLAK5uy_kYgUEBJgEdHwktkUS9BOuILL0yxSFMnIQ&feature=shared', 'youtube-qr'); // Replace with your actual YouTube music URL
+        });
+    </script>
 </body>
 </html>
